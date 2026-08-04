@@ -1,0 +1,108 @@
+/* =======================================
+   Improved Dark Mode Overrides
+   High contrast, rich dark teal/charcoal base
+======================================= */
+
+[data-theme="dark"] {
+  /* Core Palette */
+  --primary: #529489;            /* Crisp Sage Green */
+  --primary-hover: #6EB2A6;
+  --secondary: #E0966F;          /* Warm Terracotta Accent */
+  --secondary-hover: #F2AC87;
+  --accent: #1F2D2A;
+
+  /* Surfaces & Backgrounds */
+  --background: #111817;         /* Rich Dark Slate Charcoal */
+  --surface: #1A2422;            /* Elevated Card/Header Background */
+  --surface-alt: #22302D;        /* Secondary Section Background */
+  --border-color: #2E3E3B;       /* Clean Subtle Border */
+
+  /* Typography & Elements */
+  --dark-text: #EBF2F0;          /* High-Contrast Off-White Text */
+  --text-muted: #9BB0A9;         /* Muted Slate Text */
+  --light-gray: #2A3B37;
+  --white: #FFFFFF;
+}
+
+/* Base Headings & Links */
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4 {
+  color: var(--dark-text);      /* Crisp text visibility */
+}
+
+/* Primary Action Buttons */
+[data-theme="dark"] .btn {
+  background: var(--primary);
+  color: #FFFFFF;
+}
+
+[data-theme="dark"] .btn:hover {
+  background: var(--primary-hover);
+}
+
+/* Outline Buttons */
+[data-theme="dark"] .btn-outline {
+  border-color: var(--dark-text);
+  color: var(--dark-text);
+}
+
+[data-theme="dark"] .btn-outline:hover {
+  background: var(--dark-text);
+  color: var(--background);
+}
+
+/* Cards & Elevated Containers */
+[data-theme="dark"] .card,
+[data-theme="dark"] .form-box,
+[data-theme="dark"] .faq-item,
+[data-theme="dark"] header {
+  background: var(--surface);
+  border-color: var(--border-color);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Toggle Buttons */
+[data-theme="dark"] .toggle-btn {
+  background: var(--surface-alt);
+  color: var(--primary);
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .toggle-btn:hover {
+  background: var(--primary);
+  color: #FFFFFF;
+}
+
+/* Footer Styling */
+[data-theme="dark"] footer {
+  background: #0B100F;
+  border-top: 1px solid var(--border-color);
+}
+
+/* Skeleton Loading State */
+[data-theme="dark"] .skeleton {
+  background: linear-gradient(90deg, #1A2422 25%, #293835 37%, #1A2422 63%);
+  background-size: 400% 100%;
+}
+
+/* Media Query Sync for Native Preference */
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme]) {
+    --background: #111817;
+    --surface: #1A2422;
+    --surface-alt: #22302D;
+    --border-color: #2E3E3B;
+    --dark-text: #EBF2F0;
+    --text-muted: #9BB0A9;
+    --light-gray: #2A3B37;
+  }
+
+  html:not([data-theme]) h1,
+  html:not([data-theme]) h2,
+  html:not([data-theme]) h3,
+  html:not([data-theme]) h4 {
+    color: var(--dark-text);
+  }
+}

@@ -1,0 +1,79 @@
+/* =======================================
+   RTL (Right-to-Left) Support
+   Activated when <html dir="rtl">
+   Toggled via the header language/direction button.
+======================================= */
+
+[dir="rtl"] body {
+  text-align: right;
+}
+
+[dir="rtl"] .navbar {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .nav-links {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .utility-toggles {
+  margin-left: 0;
+  margin-right: 12px;
+}
+
+[dir="rtl"] .hero-buttons,
+[dir="rtl"] .gallery-filters,
+[dir="rtl"] .social-icons {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .about-flex,
+[dir="rtl"] .feature-item,
+[dir="rtl"] .contact-info-item {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+[dir="rtl"] .price-card ul li::before {
+  content: "";
+}
+
+[dir="rtl"] .price-card ul li::after {
+  content: " ✓";
+  color: var(--primary);
+  font-weight: bold;
+}
+
+[dir="rtl"] .price-card ul {
+  text-align: right;
+  padding-right: 0;
+}
+
+[dir="rtl"] .faq-question {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .form-group label {
+  text-align: right;
+}
+
+[dir="rtl"] .footer-grid {
+  direction: rtl;
+}
+
+[dir="rtl"] .skip-link {
+  left: auto;
+  right: -9999px;
+}
+
+[dir="rtl"] .skip-link:focus {
+  right: 0;
+  left: auto;
+}
+
+@media (max-width: 639px) {
+  [dir="rtl"] .nav-links {
+    right: 0;
+    left: auto;
+  }
+}
