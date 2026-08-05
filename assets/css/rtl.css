@@ -2,35 +2,46 @@
    RTL (Right-to-Left) Support
    Activated when <html dir="rtl">
    Toggled via the header language/direction button.
+
+   IMPORTANT — read before adding flex-direction: row-reverse anywhere
+   in this file: setting the HTML `dir="rtl"` attribute already makes
+   the browser compute `direction: rtl` on every descendant (it's a
+   normal inherited CSS property). For any `display: flex` container
+   using the default `flex-direction: row`, that alone already
+   reverses which side items start from — the browser mirrors it for
+   you automatically, no CSS needed.
+
+   Manually adding `flex-direction: row-reverse` on top of that
+   double-reverses the layout, which cancels out and renders
+   *identically* to plain LTR — this is exactly why the navbar
+   previously looked like RTL "did nothing" when toggled: the row
+   order was being flipped twice. Every `flex-direction: row-reverse`
+   rule that used to be in this file has been removed for that reason
+   — do not re-add them for row-flex containers. (Only relevant for
+   `flex-direction: row`. Physical properties like `left`/`right`/
+   `padding-left` are NOT auto-mirrored by `direction` and still need
+   the manual overrides below.)
 ======================================= */
 
 [dir="rtl"] body {
   text-align: right;
 }
 
-[dir="rtl"] .navbar {
-  flex-direction: row-reverse;
-}
-
-[dir="rtl"] .nav-links {
-  flex-direction: row-reverse;
-}
+/* .navbar, .nav-links, .hero-buttons, .gallery-filters, .social-icons,
+   .about-flex, .feature-item, .contact-info-item, .faq-question, and
+   .utility-toggles are all `display: flex` with the default
+   `flex-direction: row` in style.css — every one of them mirrors
+   automatically from the native `direction: rtl` inheritance once
+   <html dir="rtl"> is set. No flex-direction override needed here. */
 
 [dir="rtl"] .utility-toggles {
   margin-left: 0;
   margin-right: 12px;
 }
 
-[dir="rtl"] .hero-buttons,
-[dir="rtl"] .gallery-filters,
-[dir="rtl"] .social-icons {
-  flex-direction: row-reverse;
-}
-
 [dir="rtl"] .about-flex,
 [dir="rtl"] .feature-item,
 [dir="rtl"] .contact-info-item {
-  flex-direction: row-reverse;
   text-align: right;
 }
 
@@ -47,10 +58,6 @@
 [dir="rtl"] .price-card ul {
   text-align: right;
   padding-right: 0;
-}
-
-[dir="rtl"] .faq-question {
-  flex-direction: row-reverse;
 }
 
 [dir="rtl"] .form-group label {
@@ -71,7 +78,39 @@
   left: auto;
 }
 
+/* Desktop navbar fix — style.css gives .nav-links a hardcoded
+   padding-left: 200px (at 960px+) to space it away from the logo.
+   That's a physical value, so it isn't auto-mirrored by `direction`
+   the way flex order is — it still needs a manual override at the
+   same breakpoint where the original padding applies. */
+@media (min-width: 960px) {
+  [dir="rtl"] .nav-links {
+    padding-left: 0;
+    padding-right: 200px;
+  }
+}
+
+/* Scroll-to-top button — physical position, needs manual mirroring */
+[dir="rtl"] #scrollTopBtn {
+  right: auto;
+  left: 26px;
+}
+
+/* Nav dropdown menu (e.g. a "Services" submenu) opens from the wrong
+   edge in RTL unless flipped — physical position, needs mirroring */
+[dir="rtl"] .dropdown-menu {
+  left: auto;
+  right: 0;
+}
+
 @media (max-width: 639px) {
+  [dir="rtl"] .dropdown-menu {
+    padding-left: 0;
+    padding-right: 14px;
+  }
+}
+
+@media (max-width: 959px) {
   [dir="rtl"] .nav-links {
     right: 0;
     left: auto;
