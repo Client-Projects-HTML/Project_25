@@ -343,19 +343,45 @@ header {
   flex-direction: column;
   justify-content: center; /* Center the 3 bars vertically within the button */
   align-items: center;     /* Center the 3 bars horizontally */
-  height: 40px;            /* Match the height of .toggle-btn */
-  width: 40px;             /* Give it a consistent square touch target */
+  gap: 5px;
+  height: 44px;             /* Match the theme/RTL toggle buttons */
+  width: 44px;
   padding: 0;
   cursor: pointer;
-  background: none;
-  border: none;
+  background: var(--surface-alt);
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  order: 3;                /* Always render after .utility-toggles (order: 2) so it stays the last, right-most control */
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.nav-toggle:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.nav-toggle:hover span {
+  background: var(--white);
 }
 
 .nav-toggle span {
-  width: 30px;
-  height: 8px;
-  background: var(--primary);
+  width: 18px;
+  height: 2px;
   border-radius: 2px;
+  background: var(--primary);
+  transition: transform 0.25s ease, opacity 0.25s ease, background 0.2s ease;
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 /* ---------- Hero ---------- */
@@ -801,6 +827,74 @@ footer {
   padding-top: 18px;
   font-size: 13.5px;
   color: #8FA29C;
+}
+
+/* ---------- Blog ---------- */
+.blog-card .card-img-wrap {
+  position: relative;
+}
+
+.blog-card .card-tag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: var(--secondary);
+  color: var(--white);
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 30px;
+}
+
+[dir="rtl"] .blog-card .card-tag {
+  left: auto;
+  right: 14px;
+}
+
+.blog-card .card-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.blog-card .card-meta i {
+  color: var(--secondary);
+}
+
+.blog-card .card-body h3 a {
+  color: var(--primary);
+  transition: color 0.2s ease;
+}
+
+.blog-card .card-body h3 a:hover {
+  color: var(--secondary);
+}
+
+.blog-card .read-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--secondary);
+}
+
+.blog-card .read-more i {
+  font-size: 12px;
+  transition: transform 0.2s ease;
+}
+
+.blog-card .read-more:hover i {
+  transform: translateX(4px);
+}
+
+[dir="rtl"] .blog-card .read-more:hover i {
+  transform: translateX(-4px);
 }
 
 /* ---------- Scroll to top ---------- */

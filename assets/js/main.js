@@ -1,11 +1,6 @@
 /* =======================================
    Interior Painting & Home Decor Website
    Main JavaScript (vanilla, ES6+)
-   Note: theme/direction choices are kept in
-   memory for the session only (no localStorage
-   in this delivery environment). If you host
-   this yourself, persist the choice with
-   localStorage — see documentation/customization-guide.md
 ======================================= */
 
 // ---------- Mobile Nav Toggle ----------
@@ -107,7 +102,6 @@ function initGallerySkeleton() {
   const wrap = document.getElementById('galleryGrid');
   if (!wrap) return;
 
-  // Simulates a network/data fetch delay, then reveals real content.
   setTimeout(function () {
     wrap.classList.add('loaded');
   }, 700);
@@ -214,7 +208,7 @@ function initServiceCalculator() {
   });
 }
 
-// ---------- Dark / Light Mode Toggle ----------
+// ---------- Dark / Light Mode Toggle (With Persistence) ----------
 function initThemeToggle() {
   const btn = document.getElementById('themeToggle');
   if (!btn) return;
@@ -225,20 +219,27 @@ function initThemeToggle() {
     btn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
   }
 
-  if (!document.documentElement.hasAttribute('data-theme') &&
+  // Restore saved theme from localStorage if present
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme) {
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  } else if (!document.documentElement.hasAttribute('data-theme') &&
       window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
     document.documentElement.setAttribute('data-theme', 'dark');
   }
+  
   applyIcon();
 
   btn.addEventListener('click', function () {
     const current = document.documentElement.getAttribute('data-theme');
-    document.documentElement.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+    const newTheme = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
     applyIcon();
   });
 }
 
-// ---------- RTL / LTR Direction Toggle ----------
+// ---------- RTL / LTR Direction Toggle (With Persistence) ----------
 function initDirectionToggle() {
   const btn = document.getElementById('dirToggle');
   if (!btn) return;
@@ -248,11 +249,18 @@ function initDirectionToggle() {
     btn.setAttribute('aria-label', isRtl ? 'Switch to left-to-right layout' : 'Switch to right-to-left layout');
   }
 
+  const savedDir = localStorage.getItem('direction');
+  if (savedDir) {
+    document.documentElement.setAttribute('dir', savedDir);
+  }
+
   applyLabel();
 
   btn.addEventListener('click', function () {
     const current = document.documentElement.getAttribute('dir') || 'ltr';
-    document.documentElement.setAttribute('dir', current === 'rtl' ? 'ltr' : 'rtl');
+    const newDir = current === 'rtl' ? 'ltr' : 'rtl';
+    document.documentElement.setAttribute('dir', newDir);
+    localStorage.setItem('direction', newDir);
     applyLabel();
   });
 }
@@ -275,7 +283,7 @@ function initCountdown() {
   if (!el) return;
 
   const launchDate = new Date();
-  launchDate.setDate(launchDate.getDate() + 14); // demo: 14 days from now
+  launchDate.setDate(launchDate.getDate() + 14);
 
   function update() {
     const diff = launchDate - new Date();

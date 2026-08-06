@@ -27,6 +27,23 @@
   text-align: right;
 }
 
+/* Hero — .hero forces text-align:center in style.css, which is why
+   toggling RTL looked like it "did nothing" to the big heading. Give
+   RTL its own alignment here so the hero visibly flips like the rest
+   of the page. */
+[dir="rtl"] .hero {
+  text-align: right;
+}
+
+[dir="rtl"] .hero-buttons {
+  justify-content: flex-end;
+}
+
+[dir="rtl"] .hero p {
+  margin-left: auto;
+  margin-right: 0;
+}
+
 /* .navbar, .nav-links, .hero-buttons, .gallery-filters, .social-icons,
    .about-flex, .feature-item, .contact-info-item, .faq-question, and
    .utility-toggles are all `display: flex` with the default
