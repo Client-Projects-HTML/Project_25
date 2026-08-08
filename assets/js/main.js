@@ -13,6 +13,19 @@ function initNavToggle() {
     const isOpen = navLinks.classList.toggle('open');
     navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
   });
+
+  const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+  dropdownToggles.forEach(function (toggle) {
+    toggle.addEventListener('click', function (e) {
+      if (window.innerWidth <= 959) {
+        e.preventDefault();
+        const parentDropdown = this.closest('.dropdown');
+        if (parentDropdown) {
+          parentDropdown.classList.toggle('open');
+        }
+      }
+    });
+  });
 }
 
 // ---------- Sticky Header Shadow on Scroll ----------
@@ -215,8 +228,11 @@ function initThemeToggle() {
 
   function applyIcon() {
     const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    btn.innerHTML = isDark ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+    btn.innerHTML = isDark ? '<i data-lucide="sun"></i>' : '<i data-lucide="moon"></i>';
     btn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+    if (window.lucide) {
+      lucide.createIcons();
+    }
   }
 
   // Restore saved theme from localStorage if present

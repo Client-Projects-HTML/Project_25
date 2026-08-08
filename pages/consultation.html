@@ -4,23 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Book a Consultation | Bloom Interiors</title>
+<link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
 <meta name="description" content="Book a free home design consultation with Bloom Interiors and get an instant rough cost estimate with our calculator.">
 <link rel="stylesheet" href="../assets/css/style.css">
 <link rel="stylesheet" href="../assets/css/responsive.css">
 <link rel="stylesheet" href="../assets/css/animation.css">
 <link rel="stylesheet" href="../assets/css/dark-mode.css">
 <link rel="stylesheet" href="../assets/css/rtl.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 </head>
 <body>
 <a href="#mainContent" class="skip-link">Skip to main content</a>
 <header id="mainHeader">
   <div class="container navbar">
-    <a href="index.html" class="logo">Bloom<span>Interiors</span></a>
+    <a href="index.html" class="logo" style="display:flex;align-items:center;"><img src="../assets/images/logo.svg" alt="Bloom Interiors" style="height:32px; width:auto; margin-right:8px;">Bloom<span>Interiors</span></a>
     <nav class="nav-links" id="navLinks" aria-label="Primary navigation">
             <div class="dropdown">
         <a href="index.html" class="active dropdown-toggle" aria-haspopup="true" aria-expanded="false">
-          Home <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+          Home <i data-lucide="chevron-down" class="dropdown-arrow"></i>
         </a>
         <div class="dropdown-menu">
           <a href="index.html" class="active">Home 1</a>
@@ -35,12 +36,13 @@
       <a href="projects.html">Projects</a>
       <!-- <a href="pricing.html">Pricing</a> -->
       <a href="faq.html">Faq</a>
+      <a href="contact.html">Contact</a>
       <a href="consultation.html" class="btn nav-mobile-cta">Book Consultation</a>
     
     </nav>
     <div class="utility-toggles">
-      <button class="toggle-btn" id="themeToggle" aria-label="Toggle dark mode"><i class="fa-solid fa-moon"></i></button>
-      <button class="toggle-btn" id="dirToggle" aria-label="Toggle right-to-left layout"><i class="fa-solid fa-right-left"></i></button>
+      <button class="toggle-btn" id="themeToggle" aria-label="Toggle dark mode"><i data-lucide="moon"></i></button>
+      <button class="toggle-btn" id="dirToggle" aria-label="Toggle right-to-left layout"><i data-lucide="arrow-right-left"></i></button>
     </div>
     <a href="consultation.html" class="btn" style="margin-left:14px;">Book Consultation</a>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
@@ -128,11 +130,11 @@
   <div class="container">
     <div class="footer-grid">
       <div>
-        <h4>Bloom Interiors</h4>
-        <p style="font-size:14px;color:#bbb;margin-bottom:14px;">Making homes beautiful, one room at a time.</p>
+        <a href="index.html" class="logo" style="display:flex;align-items:center;margin-bottom:16px;font-size:24px;font-weight:600;color:var(--dark-text);text-decoration:none;"><img src="../assets/images/logo.svg" alt="Bloom Interiors" style="height:32px; width:auto; margin-right:8px;">Bloom<span style="font-weight:400;">Interiors</span></a>
+        <p style="font-size:14px;color:var(--text-muted);margin-bottom:14px;">Making homes beautiful, one room at a time.</p>
         <form id="newsletterForm" novalidate>
           <div class="form-group" style="margin-bottom:8px;">
-            <label for="newsletterEmail" style="color:#ddd;">Get design tips by email</label>
+            <label for="newsletterEmail" style="color:var(--dark-text);">Get design tips by email</label>
             <input type="email" id="newsletterEmail" name="newsletterEmail" placeholder="you@example.com" required>
             <span class="field-error"></span>
           </div>
@@ -140,42 +142,40 @@
           <div class="form-message" id="newsletterFormMessage"></div>
         </form>
         <div class="social-icons" style="margin-top:16px;">
-          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+          <a href="#" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+          <a href="#" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+          <a href="#" aria-label="Youtube"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg></a>
         </div>
       </div>
      <div>
         <h4>Quick Links</h4>
         <ul>
-          <!-- <li><a href="about.html">About Us</a></li> -->
+          <li><a href="about.html">About Us</a></li>
           <li><a href="services.html">Services</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
-           <li>    <a href="faq.html">FAQ</a></li> 
-
-          <!-- <li><a href="pricing.html">Pricing</a></li> -->
-          <li><a href="404.html">Heyy Guys</a></li>
-          <li><a href="coming-soon.html">Let's Make</a></li>
+          <li><a href="404.html">Packages</a></li>
+          <li><a href="coming-soon.html">Lookbook</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
       <div>
         <h4>Quick Links</h4>
         <ul>
-          <li><a href="blog.html">Blog</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
           <li><a href="gallery.html">Gallery</a></li>
-
+          <li><a href="blog.html">Blog</a></li>
           <li><a href="contact.html">Contact</a></li>
-          <li><a href="404.html">Packages</a></li>
-          <li><a href="coming-soon.html">Lookbook</a></li>
         </ul>
 
       </div>
       <div>
         <h4>Contact</h4>
         <ul>
-          <li><i class="fa-solid fa-location-dot"></i> 12 MG Road, Hyderabad, India</li>
-          <li><i class="fa-solid fa-phone"></i> +91 98765 43210</li>
-          <li><i class="fa-solid fa-envelope"></i> hello@bloominteriors.com</li>
+          <li style="display:flex;align-items:center;gap:10px;"><i data-lucide="map-pin"></i> 12 MG Road, Hyderabad, India</li>
+          <li style="display:flex;align-items:center;gap:10px;"><i data-lucide="phone"></i> +91 98765 43210</li>
+          <li style="display:flex;align-items:center;gap:10px;"><i data-lucide="mail"></i> hello@bloominteriors.com</li>
         </ul>
       </div>
     </div>
@@ -183,7 +183,9 @@
   </div>
 </footer>
 
-<button id="scrollTopBtn" aria-label="Scroll to top"><i class="fa-solid fa-arrow-up"></i></button>
+<button id="scrollTopBtn" aria-label="Scroll to top"><i data-lucide="arrow-up"></i></button>
 <script src="../assets/js/main.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>lucide.createIcons();</script>
 </body>
 </html>
