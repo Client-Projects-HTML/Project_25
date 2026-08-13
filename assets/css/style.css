@@ -137,7 +137,9 @@ select:focus-visible {
 
 /* ─── Base Reset ─── */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html, body { overflow-x: clip; }
+html, body {
+  min-height: 100%;
+}
 
 body {
   font-family: 'Open Sans', sans-serif;
@@ -146,6 +148,10 @@ body {
   line-height: 1.65;
   transition: background-color 0.3s ease, color 0.3s ease;
   -webkit-font-smoothing: antialiased;
+}
+
+main {
+  overflow-x: hidden;
 }
 
 /* ─── Skeleton Loading ─── */
@@ -427,6 +433,8 @@ header {
   order: 3;
   transition: background var(--transition), border-color var(--transition);
   flex-shrink: 0;
+  z-index: 100;
+  position: relative;
 }
 .nav-toggle:hover { background: var(--primary); border-color: var(--primary); }
 .nav-toggle:hover span { background: var(--white); }

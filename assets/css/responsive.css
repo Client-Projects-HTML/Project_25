@@ -61,9 +61,13 @@
   .form-row { grid-template-columns: minmax(0, 1fr); }
   .hero-buttons { flex-direction: column; width: 100%; }
   .hero-buttons .btn, .hero-buttons .btn-ghost { width: 100%; max-width: none; }
+  .stats-strip .container { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 16px; }
+  .stat-item { border: none; padding: 0; flex-direction: column; text-align: center; justify-content: center; }
   .section { padding: 48px 0; }
   .section-title h2 { font-size: clamp(1.4rem, 6vw, 1.8rem); }
+  .form-box { padding: 24px 18px 18px 18px; }
   .card img, .gallery-item img { height: 200px; object-fit: cover; }
+  .testimonial-card img { height: 72px; width: 72px; border-radius: 50%; }
   .testimonial-card, .price-card { padding: 24px 16px; }
   .gallery-filters { flex-wrap: wrap; justify-content: center; gap: 6px; }
   .footer-bottom { flex-direction: column; text-align: center; gap: 10px; }
