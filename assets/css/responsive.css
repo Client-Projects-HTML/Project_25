@@ -1,85 +1,99 @@
 /* =========================================================
-   BLOOM INTERIORS — Responsive Rules
-   Breakpoints: 1200 / 960 (nav) / 768 / 640 / 480 / 380
-   Layered on top of style.css, which already handles the nav
-   collapse and a few component breakpoints directly.
+   BLOOM INTERIORS — Production Responsive Rules
+   Comprehensive fluid breakpoints
    ========================================================= */
 
-@media (max-width: 1200px) {
-  .container { width: 92%; }
-  .grid-4 { grid-template-columns: repeat(3, 1fr); }
+/* ─── Desktop / Large Laptops (1440px - 1920px) ─── */
+@media (min-width: 1441px) {
+  .container { max-width: 1440px; }
+  .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 
-@media (max-width: 960px) {
-  .section { padding: 56px 0; }
-  .grid-4 { grid-template-columns: repeat(2, 1fr); }
-  .grid-3 { grid-template-columns: repeat(2, 1fr); }
-  .footer-grid { grid-template-columns: repeat(2, 1fr); }
-  .card .card-body { padding: 20px; }
-  .price-card { padding: 28px 20px; }
+/* ─── Standard Laptop (1025px - 1440px) ─── */
+@media (max-width: 1440px) {
+  .hero h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); }
 }
 
-@media (max-width: 768px) {
-  .container { width: 94%; }
+/* ─── Small Laptop / Large Tablet (960px - 1024px) ─── */
+@media (min-width: 960px) and (max-width: 1024px) {
+  .container { width: 100%; }
+  .grid-4 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 24px; }
+  .nav-links { gap: 16px; }
+}
+
+/* ─── Tablet Portrait (640px - 959px) ─── */
+@media (min-width: 640px) and (max-width: 959px) {
+  .container { width: 100%; }
+  .grid-4, .grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 24px; }
+  .hero-content { padding-top: 60px; padding-bottom: 60px; }
+  .section { padding: 60px 0; }
+  .footer-tagline, .footer-newsletter { max-width: 100%; }
+  .form-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Base order shift for all mobile/tablet views where grid collapses or we want form first */
+@media (max-width: 959px) {
+  .contact-form-wrapper { order: -1; }
+}
+
+/* ─── Large Mobile (481px - 639px) ─── */
+@media (min-width: 481px) and (max-width: 639px) {
+  .container { width: 100%; }
+  .grid-4, .grid-3, .grid-2 { grid-template-columns: minmax(0, 1fr); }
+  .footer-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .form-row { grid-template-columns: minmax(0, 1fr); }
+  .hero-buttons { flex-direction: column; width: 100%; }
+  .hero-buttons .btn, .hero-buttons .btn-ghost { width: 100%; max-width: none; }
   .section { padding: 48px 0; }
-  .section-title h2 { font-size: 26px; }
-  .hero { padding: 100px 0; }
-  .hero h1 { font-size: 32px; }
-  .about-flex { flex-direction: column; gap: 30px; }
-  .gallery-filters { gap: 8px; flex-wrap: wrap; justify-content: center; }
-  .filter-btn { padding: 8px 16px; font-size: 0.85rem; }
-  .contact-info-item { flex-direction: column; text-align: center; }
-  .cta-banner { padding: 40px 24px; text-align: center; }
-  .dropdown-menu { min-width: 140px; }
+  .gallery-filters { flex-wrap: wrap; justify-content: center; gap: 8px; }
 }
 
-@media (max-width: 640px) {
-  .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; }
-  .footer-grid { grid-template-columns: 1fr; text-align: center; }
-  .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
-  .hero { padding: 90px 0; }
-  .hero-buttons { flex-direction: column; align-items: stretch; }
-  .hero-buttons .btn { width: 100%; }
-  .form-row { grid-template-columns: 1fr; }
-  .price-card.featured { transform: none; }
-  .testimonial-card { padding: 26px 20px; }
-  .testimonial-card p { font-size: 1rem; }
-  .social-icons { justify-content: center; }
-  .utility-toggles { gap: 6px; }
-  .toggle-btn { width: 38px; height: 38px; min-width: 38px; min-height: 38px; }
-  .calc-result { padding: 18px; }
-}
-
+/* ─── Mobile (320px - 480px) ─── */
 @media (max-width: 480px) {
-  .container { width: 100%; padding: 0 18px; }
-  .section { padding: 40px 0; }
-  .section-title { margin-bottom: 28px; }
-  .section-title h2 { font-size: 22px; }
-  .hero h1 { font-size: 26px; line-height: 1.3; }
-  .hero { padding: 80px 0; }
-  .page-banner { padding: 60px 0 30px; }
-  .logo { font-size: 19px; }
-  .card .card-body { padding: 16px; }
-  .price { font-size: 1.7rem; }
-  .form-box { padding: 22px 18px; }
-  .faq-question { padding: 14px 16px; font-size: 0.94rem; }
-  .faq-answer { padding: 0 16px 14px; }
-  .gallery-item img { aspect-ratio: 4/3; }
-  .feature-item { padding: 20px 14px; }
-  .cta-banner h2 { font-size: 1.4rem; }
-  .btn { padding: 11px 20px; font-size: 14px; }
+  .navbar { gap: 8px; }
+  .container { width: 100%; padding-inline: 16px; }
+  .grid-4, .grid-3, .grid-2 { grid-template-columns: minmax(0, 1fr); }
+  .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+  .footer-grid > :nth-child(1), .footer-grid > :nth-child(4) { grid-column: span 2; }
+  .form-row { grid-template-columns: minmax(0, 1fr); }
+  .hero-buttons { flex-direction: column; width: 100%; }
+  .hero-buttons .btn, .hero-buttons .btn-ghost { width: 100%; max-width: none; }
+  .section { padding: 48px 0; }
+  .section-title h2 { font-size: clamp(1.4rem, 6vw, 1.8rem); }
+  .card img, .gallery-item img { height: 200px; object-fit: cover; }
+  .testimonial-card, .price-card { padding: 24px 16px; }
+  .gallery-filters { flex-wrap: wrap; justify-content: center; gap: 6px; }
+  .footer-bottom { flex-direction: column; text-align: center; gap: 10px; }
 }
 
-@media (max-width: 380px) {
-  .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; }
-  .hero h1 { font-size: 22px; }
-  .price-card { padding: 24px 16px; }
-  .utility-toggles { display: none; }
+/* ─── Small Android Mobile (max-width: 360px) ─── */
+@media (max-width: 360px) {
+  .navbar { gap: 4px; }
+  .utility-toggles { gap: 4px; margin-right: 4px; }
+  .toggle-btn { width: 34px; height: 34px; min-width: 34px; min-height: 34px; }
+  .nav-toggle { width: 34px; height: 34px; }
+  .navbar { padding: 12px 0; }
+  .logo { font-size: 16px; }
+  .logo img { height: 24px; }
+  .footer-newsletter .btn { font-size: 12px; }
 }
 
-/* Touch target safety net for any touchscreen device */
+/* ─── Touch target safety net ─── */
 @media (hover: none) and (pointer: coarse) {
-  .btn, .nav-links a, .toggle-btn, .nav-toggle, .filter-btn {
+  .btn, .nav-links a, .filter-btn, .faq-question {
     min-height: 44px;
   }
+  .btn-sm { min-height: 42px; }
+  .gallery-item::after { opacity: 1; }
+}
+
+/* ─── Print styles ─── */
+@media print {
+  header, footer, #scrollTopBtn, .nav-toggle,
+  .utility-toggles, .cta-banner { display: none !important; }
+  body { background: white; color: black; }
+  .container { width: 100%; max-width: none; }
 }

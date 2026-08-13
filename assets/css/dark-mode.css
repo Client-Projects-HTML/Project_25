@@ -1,108 +1,261 @@
 /* =======================================
-   Improved Dark Mode Overrides
-   High contrast, rich dark teal/charcoal base
+   Bloom Interiors — Dark Mode Overrides
+   All color changes use CSS custom properties
+   already declared in style.css. This file
+   only overrides components that need
+   additional dark-mode-specific rules beyond
+   what the CSS vars alone handle.
 ======================================= */
 
-[data-theme="dark"] {
-  /* Core Palette */
-  --primary: #529489;            /* Crisp Sage Green */
-  --primary-hover: #6EB2A6;
-  --secondary: #E0966F;          /* Warm Terracotta Accent */
-  --secondary-hover: #F2AC87;
-  --accent: #1F2D2A;
-
-  /* Surfaces & Backgrounds */
-  --background: #111817;         /* Rich Dark Slate Charcoal */
-  --surface: #1A2422;            /* Elevated Card/Header Background */
-  --surface-alt: #22302D;        /* Secondary Section Background */
-  --border-color: #2E3E3B;       /* Clean Subtle Border */
-
-  /* Typography & Elements */
-  --dark-text: #EBF2F0;          /* High-Contrast Off-White Text */
-  --text-muted: #9BB0A9;         /* Muted Slate Text */
-  --light-gray: #2A3B37;
-  --white: #FFFFFF;
-}
-
-/* Base Headings & Links */
+/* ─── Base element overrides ─── */
 [data-theme="dark"] h1,
 [data-theme="dark"] h2,
 [data-theme="dark"] h3,
 [data-theme="dark"] h4 {
-  color: var(--dark-text);      /* Crisp text visibility */
+  color: var(--dark-text);
 }
 
-/* Primary Action Buttons */
+/* Headings inside coloured containers stay white */
+[data-theme="dark"] .hero h1,
+[data-theme="dark"] .cta-banner h2,
+[data-theme="dark"] .page-banner h1 {
+  color: #FFFFFF;
+}
+
+/* ─── Header ─── */
+[data-theme="dark"] header {
+  background: var(--surface);
+  border-bottom-color: var(--border-color);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+}
+
+/* ─── Nav links ─── */
+[data-theme="dark"] .nav-links > a,
+[data-theme="dark"] .nav-links > .dropdown > a {
+  color: var(--dark-text);
+}
+[data-theme="dark"] .nav-links > a:hover,
+[data-theme="dark"] .nav-links > .dropdown > a:hover,
+[data-theme="dark"] .nav-links > a.active {
+  color: var(--primary);
+  background: var(--accent);
+}
+
+/* Mobile nav panel */
+[data-theme="dark"] .nav-links {
+  background: var(--surface);
+  border-bottom-color: var(--border-color);
+}
+
+/* ─── Dropdown ─── */
+[data-theme="dark"] .dropdown-menu {
+  background: var(--surface);
+  border-color: var(--border-color);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+}
+[data-theme="dark"] .dropdown-menu a { color: var(--dark-text); }
+[data-theme="dark"] .dropdown-menu a:hover {
+  background: var(--surface-alt);
+  color: var(--primary);
+}
+
+/* ─── Buttons ─── */
 [data-theme="dark"] .btn {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #FFFFFF;
+}
+[data-theme="dark"] .btn:hover {
+  background: var(--primary-hover);
+  border-color: var(--primary-hover);
+}
+
+[data-theme="dark"] .btn-secondary {
+  background: var(--secondary);
+  border-color: var(--secondary);
+  color: #FFFFFF;
+}
+[data-theme="dark"] .btn-secondary:hover {
+  background: var(--secondary-hover);
+  border-color: var(--secondary-hover);
+}
+
+[data-theme="dark"] .btn-outline {
+  background: transparent;
+  border-color: var(--primary);
+  color: var(--primary);
+}
+[data-theme="dark"] .btn-outline:hover {
   background: var(--primary);
   color: #FFFFFF;
 }
 
-[data-theme="dark"] .btn:hover {
-  background: var(--primary-hover);
+[data-theme="dark"] .btn-ghost {
+  background: transparent;
+  border-color: rgba(255,255,255,0.6);
+  color: #FFFFFF;
+}
+[data-theme="dark"] .btn-ghost:hover {
+  background: rgba(255,255,255,0.15);
+  border-color: #FFFFFF;
 }
 
-/* Outline Buttons */
-[data-theme="dark"] .btn-outline {
-  border-color: var(--dark-text);
+/* ─── Cards ─── */
+[data-theme="dark"] .card,
+[data-theme="dark"] .faq-item,
+[data-theme="dark"] .feature-item,
+[data-theme="dark"] .contact-info-item {
+  background: var(--surface);
+  border-color: var(--border-color);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+}
+[data-theme="dark"] .card-body h3 { color: var(--dark-text); }
+[data-theme="dark"] .card-body p { color: var(--text-muted); }
+
+/* ─── Form box ─── */
+[data-theme="dark"] .form-box {
+  background: var(--surface);
+  border-color: var(--border-color);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+}
+[data-theme="dark"] .form-group label { color: var(--dark-text); }
+[data-theme="dark"] .form-group input,
+[data-theme="dark"] .form-group select,
+[data-theme="dark"] .form-group textarea {
+  background: var(--background);
+  border-color: var(--border-color);
+  color: var(--dark-text);
+}
+[data-theme="dark"] .form-group input:focus,
+[data-theme="dark"] .form-group select:focus,
+[data-theme="dark"] .form-group textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(82,148,137,0.2);
+}
+[data-theme="dark"] .form-group input::placeholder,
+[data-theme="dark"] .form-group textarea::placeholder {
+  color: var(--text-muted);
+}
+
+/* ─── Footer ─── */
+[data-theme="dark"] footer {
+  background: #0C1412;
+  border-top-color: var(--border-color);
+}
+[data-theme="dark"] .footer-grid h4 { color: var(--dark-text); }
+[data-theme="dark"] .footer-grid ul li a { color: var(--text-muted); }
+[data-theme="dark"] .footer-grid ul li a:hover { color: var(--secondary); }
+[data-theme="dark"] .footer-contact-item { color: var(--text-muted); }
+[data-theme="dark"] .footer-contact-item i { color: var(--primary); }
+[data-theme="dark"] .footer-bottom { border-top-color: var(--border-color); color: var(--text-muted); }
+[data-theme="dark"] .footer-logo { color: var(--dark-text); }
+[data-theme="dark"] .footer-tagline { color: var(--text-muted); }
+[data-theme="dark"] .footer-newsletter input {
+  background: var(--surface);
+  border-color: var(--border-color);
   color: var(--dark-text);
 }
 
-[data-theme="dark"] .btn-outline:hover {
-  background: var(--dark-text);
-  color: var(--background);
+/* ─── Social icons ─── */
+[data-theme="dark"] .social-icons a {
+  background: var(--surface-alt);
+  color: var(--text-muted);
+}
+[data-theme="dark"] .social-icons a:hover {
+  background: var(--secondary);
+  color: #FFFFFF;
 }
 
-/* Cards & Elevated Containers */
-[data-theme="dark"] .card,
-[data-theme="dark"] .form-box,
-[data-theme="dark"] .faq-item,
-[data-theme="dark"] header {
-  background: var(--surface);
-  border-color: var(--border-color);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
-}
-
-/* Toggle Buttons */
+/* ─── Toggle buttons ─── */
 [data-theme="dark"] .toggle-btn {
   background: var(--surface-alt);
   color: var(--primary);
   border-color: var(--border-color);
 }
-
 [data-theme="dark"] .toggle-btn:hover {
   background: var(--primary);
   color: #FFFFFF;
+  border-color: var(--primary);
 }
 
-/* Footer Styling */
-[data-theme="dark"] footer {
-  background: #0B100F;
-  border-top: 1px solid var(--border-color);
+/* ─── Stats strip ─── */
+[data-theme="dark"] .stats-strip {
+  background: var(--surface);
+  border-bottom-color: var(--border-color);
+}
+[data-theme="dark"] .stat-item { border-right-color: var(--border-color); }
+[data-theme="dark"] .stat-number { color: var(--primary); }
+[data-theme="dark"] .stat-label { color: var(--text-muted); }
+
+/* ─── Gallery ─── */
+[data-theme="dark"] .gallery-item {
+  border-color: var(--border-color);
+}
+[data-theme="dark"] .filter-btn {
+  background: var(--surface);
+  border-color: var(--border-color);
+  color: var(--text-muted);
+}
+[data-theme="dark"] .filter-btn.active,
+[data-theme="dark"] .filter-btn:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #FFFFFF;
 }
 
-/* Skeleton Loading State */
+/* ─── FAQ ─── */
+[data-theme="dark"] .faq-question {
+  color: var(--dark-text);
+}
+[data-theme="dark"] .faq-item.open .faq-question {
+  background: var(--surface-alt);
+  color: var(--primary);
+}
+[data-theme="dark"] .faq-answer { color: var(--text-muted); }
+
+/* ─── Scroll to top ─── */
+[data-theme="dark"] #scrollTopBtn {
+  background: var(--secondary);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+}
+[data-theme="dark"] #scrollTopBtn:hover {
+  background: var(--secondary-hover);
+}
+
+/* ─── Skeleton loader ─── */
 [data-theme="dark"] .skeleton {
-  background: linear-gradient(90deg, #1A2422 25%, #293835 37%, #1A2422 63%);
+  background: linear-gradient(90deg, #1A2422 25%, #253430 37%, #1A2422 63%);
   background-size: 400% 100%;
 }
 
-/* Media Query Sync for Native Preference */
-@media (prefers-color-scheme: dark) {
-  html:not([data-theme]) {
-    --background: #111817;
-    --surface: #1A2422;
-    --surface-alt: #22302D;
-    --border-color: #2E3E3B;
-    --dark-text: #EBF2F0;
-    --text-muted: #9BB0A9;
-    --light-gray: #2A3B37;
-  }
+/* ─── Price card ─── */
+[data-theme="dark"] .price-card { background: var(--surface); border-color: var(--border-color); }
+[data-theme="dark"] .price-card.featured { border-color: var(--secondary); }
+[data-theme="dark"] .price { color: var(--primary); }
+[data-theme="dark"] .price-card ul li { border-bottom-color: var(--border-color); color: var(--text-muted); }
 
+/* ─── CTA Banner ─── */
+[data-theme="dark"] .cta-banner { background: var(--primary-hover); }
+
+/* ─── System pref sync (no explicit data-theme attribute) ─── */
+@media (prefers-color-scheme: dark) {
   html:not([data-theme]) h1,
   html:not([data-theme]) h2,
   html:not([data-theme]) h3,
   html:not([data-theme]) h4 {
     color: var(--dark-text);
+  }
+  html:not([data-theme]) .hero h1,
+  html:not([data-theme]) .page-banner h1,
+  html:not([data-theme]) .cta-banner h2 {
+    color: #FFFFFF;
+  }
+  html:not([data-theme]) footer {
+    background: #0C1412;
+  }
+  html:not([data-theme]) .stats-strip,
+  html:not([data-theme]) header {
+    background: var(--surface);
+    border-color: var(--border-color);
   }
 }

@@ -31,17 +31,15 @@
    toggling RTL looked like it "did nothing" to the big heading. Give
    RTL its own alignment here so the hero visibly flips like the rest
    of the page. */
-[dir="rtl"] .hero {
-  text-align: right;
-}
-
+/* Hero keeps center alignment in RTL — text-align:center is
+   intentional for a full-width hero image section */
 [dir="rtl"] .hero-buttons {
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 [dir="rtl"] .hero p {
   margin-left: auto;
-  margin-right: 0;
+  margin-right: auto;
 }
 
 /* .navbar, .nav-links, .hero-buttons, .gallery-filters, .social-icons,
@@ -95,17 +93,9 @@
   left: auto;
 }
 
-/* Desktop navbar fix — style.css gives .nav-links a hardcoded
-   padding-left: 200px (at 960px+) to space it away from the logo.
-   That's a physical value, so it isn't auto-mirrored by `direction`
-   the way flex order is — it still needs a manual override at the
-   same breakpoint where the original padding applies. */
-@media (min-width: 960px) {
-  [dir="rtl"] .nav-links {
-    padding-left: 0;
-    padding-right: 200px;
-  }
-}
+/* The nav-links no longer use a fixed padding-left offset —
+   nav centering is handled with justify-content:center in style.css.
+   No physical padding override needed for RTL. */
 
 /* Scroll-to-top button — physical position, needs manual mirroring */
 [dir="rtl"] #scrollTopBtn {
